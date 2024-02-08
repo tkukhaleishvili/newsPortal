@@ -15,10 +15,10 @@
                 <form action="{{route('admin.auth')}}" method="POST">
                     @csrf
                   <div class="mb-3">
-                    <input class="form-control" type="email"name="email" value="#" placeholder="Email address" required=""  />
+                    <input class="form-control" type="email"name="email" value="admin@admin.com" placeholder="Email address" required=""  />
                   </div>
                   <div class="mb-3">
-                    <input class="form-control" type="password" name="password" value="#" placeholder="Password" required=""  />
+                    <input class="form-control" type="password" name="password" value="adminadmin2023" placeholder="Password" required=""  />
                   </div>
                   <div class="row flex-between-center">
                     <div class="col-auto">
@@ -32,7 +32,7 @@
                   <div class="mb-3">
                     <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" value="testadmin">Log in</button>
                   </div>
-                  {{-- <div class="col-md-8 mt-3">
+                  <div class="col-md-8 mt-3">
                     @if ($errors->has('email'))
                         <div class="alert alert-danger">
                             {{ $errors->first('email') }}
@@ -43,7 +43,7 @@
                             {{ $errors->first('password') }} 
                             </div>
                         @endif
-                    </div> --}}
+                    </div>
                 </form>
               </div>
             </div>

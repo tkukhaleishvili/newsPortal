@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('admin.pages.welcome');
-});*/
-Route::get('/', function(){
-    return view('admin.pages.dashboard');
-  })->name('dashboard');
+
 
 Route::get('/login', function () {
     return view('admin.login');
 })->name('login');
+
+Route::post('/logout', function () {
+    Session::flush();
+    Auth::logout();
+    return redirect()->route('admin.login');
+})->name('logout');
 
 
 Route::post('/login', function () {
@@ -43,8 +44,12 @@ Route::post('/login', function () {
     }
 })->name('auth');
 
-Route::post('/logout', function () {
-    Session::flush();
-    Auth::logout();
-    return redirect()->route('admin.login');
-})->name('logout');
+
+
+
+
+Route::group(['middleware' => ['auth:admin']], function() {
+  Route::get('/', function(){
+    return view('admin.pages.dashboard');
+  })->name('dashboard');
+});
